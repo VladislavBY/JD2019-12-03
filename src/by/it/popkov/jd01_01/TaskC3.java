@@ -1,4 +1,4 @@
-package by.it._tasks_.jd01_01;
+package by.it.popkov.jd01_01;
 
 /*
 Ускорение свободного падения на Земле и Марсе таково:
