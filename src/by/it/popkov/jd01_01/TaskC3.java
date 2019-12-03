@@ -1,5 +1,7 @@
 package by.it.popkov.jd01_01;
 
+import java.util.Scanner;
+
 /*
 Ускорение свободного падения на Земле и Марсе таково:
 Марс   3.86
@@ -30,5 +32,22 @@ package by.it.popkov.jd01_01;
 
 */
 class TaskC3 {
+    private static double getWeight(int weight) {
+        double marsWeight = weight / (9.81 / 3.86);
+        double intWeight = (((int) (marsWeight * 100)) / 100.0);
+        if (marsWeight - intWeight >= 0.005) {
+            marsWeight = intWeight + 0.01;
+        } else {
+            marsWeight = intWeight;
+        }
+        return marsWeight;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int weight = scan.nextInt();
+        System.out.println(getWeight(weight));
+
+    }
 
 }
