@@ -11,28 +11,6 @@ public class TaskC {
         step2(a);
     }
 
-    private static int step2(int[][] mas) {
-        int sum = 0;
-        for (int i = 0; i < mas.length; i++) {
-            int counterOfPlus = 0;
-            int inSum = 0;
-            for (int j = 0; j < mas.length; j++) {
-                if (mas[i][j] > 0 && counterOfPlus == 0) {
-                    counterOfPlus++;
-                }
-                if (mas[i][j] < 0 && counterOfPlus == 1) {
-                    inSum += mas[i][j];
-                }
-                if (mas[i][j] > 0 && counterOfPlus == 1) {
-                    sum+=inSum;
-                    break;
-                }
-            }
-        }
-        System.out.println(sum);
-        return sum;
-    }
-
     private static int[][] step1(int n) {
         int[][] mas = new int[n][n];
         int counterPlus = 0;
@@ -58,11 +36,35 @@ public class TaskC {
                 for (int j = 0; j < mas.length; j++) {
                     System.out.print(mas[i][j] + " ");
                 }
-                System.out.println();
+                System.out.print("\n");
             }
         } else {
             step1(n);
         }
         return mas;
     }
+
+    private static int step2(int[][] mas) {
+        int sum = 0;
+        for (int i = 0; i < mas.length; i++) {
+            int counterOfPlus = 0;
+            int inSum = 0;
+            for (int j = 0; j < mas.length; j++) {
+                if (mas[i][j] > 0 && counterOfPlus == 1) {
+                    sum += inSum;
+                    break;
+                }
+                if (mas[i][j] > 0 && counterOfPlus == 0) {
+                    counterOfPlus++;
+                }
+                if (mas[i][j] < 0 && counterOfPlus == 1) {
+                    inSum += mas[i][j];
+                }
+
+            }
+        }
+        System.out.println(sum);
+        return sum;
+    }
+
 }
