@@ -7,39 +7,62 @@ public class TaskC {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        step1(n);
+        int[][] a = step1(n);
+        step2(a);
+    }
+
+    private static int step2(int[][] mas) {
+        int sum = 0;
+        for (int i = 0; i < mas.length; i++) {
+            int counterOfPlus = 0;
+            int inSum = 0;
+            for (int j = 0; j < mas.length; j++) {
+                if (mas[i][j] > 0 && counterOfPlus == 0) {
+                    counterOfPlus++;
+                }
+                if (mas[i][j] < 0 && counterOfPlus == 1) {
+                    inSum += mas[i][j];
+                }
+                if (mas[i][j] > 0 && counterOfPlus == 1) {
+                    sum+=inSum;
+                    break;
+                }
+            }
+        }
+        System.out.println(sum);
+        return sum;
     }
 
     private static int[][] step1(int n) {
-        int[][] arrays = new int[n][n];
+        int[][] mas = new int[n][n];
         int counterPlus = 0;
         int counterMinus = 0;
-        for (int i = 0; i < arrays.length; i++) {
-            for (int j = 0; j < arrays.length; j++) {
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas.length; j++) {
                 Random rand = new Random();
 
                 if (rand.nextBoolean()) {
-                    arrays[i][j] = rand.nextInt(n + 1);
+                    mas[i][j] = rand.nextInt(n + 1);
                 } else {
-                    arrays[i][j] = 0 - rand.nextInt(n + 1);
+                    mas[i][j] = 0 - rand.nextInt(n + 1);
                 }
-                if (arrays[i][j] == n) {
+                if (mas[i][j] == n) {
                     counterPlus++;
-                } else if (arrays[i][j] == 0 - n) {
+                } else if (mas[i][j] == 0 - n) {
                     counterMinus++;
                 }
             }
         }
         if (counterPlus > 0 && counterMinus > 0) {
-            for (int i = 0; i < arrays.length; i++) {
-                for (int j = 0; j < arrays.length; j++) {
-                    System.out.print(arrays[i][j] + " ");
+            for (int i = 0; i < mas.length; i++) {
+                for (int j = 0; j < mas.length; j++) {
+                    System.out.print(mas[i][j] + " ");
                 }
                 System.out.println();
             }
         } else {
             step1(n);
         }
-        return arrays;
+        return mas;
     }
 }
