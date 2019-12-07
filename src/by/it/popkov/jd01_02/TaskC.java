@@ -1,5 +1,6 @@
 package by.it.popkov.jd01_02;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,63 +11,6 @@ public class TaskC {
         int[][] array = step1(n);
         step2(array);
         step3(array);
-    }
-
-    private static int[][] step3(int[][] mas) {
-        int max = mas[0][0];
-        int posI = 0;
-        int posJ = 0;
-        int secondPosI = 0;
-        int secondPosJ = 0;
-        int delI = 0;
-        int delJ = 0;
-        for (int i = 0; i < mas.length; i++) {
-            for (int j = 0; j < mas.length; j++) {
-                if (mas[i][j] > max) {
-                    max = mas[i][j];
-                    posI = i;
-                    posJ = j;
-                }
-            }
-        }
-        for (int i = 0; i < mas.length; i++) {
-            for (int j = 0; j < mas.length; j++) {
-                if (mas[i][j] == max && (posI != i || posJ != j)) {
-                    secondPosI = i;
-                    secondPosJ = j;
-                }
-            }
-        }
-
-        if (posI == secondPosI) {
-            delI = 1;
-        } else {
-            delI = 2;
-        }
-        if (posJ == secondPosJ) {
-            delJ = 1;
-        } else {
-            delJ = 2;
-        }
-
-        int[][] outPut = new int[mas.length - delI][mas.length - delJ];
-
-        for (int i = 0; i < outPut.length; i++) {
-            if (i == posI || i == secondPosI) {
-                continue;
-            }
-            for (int j = 0; j < outPut.length; j++) {
-                if (j == posJ || j == secondPosJ) {
-                    continue;
-                }
-                outPut[i][j] = mas[i][j];
-                System.out.print(outPut[i][j] + " ");
-            }
-            System.out.print("\n");
-        }
-
-
-        return outPut;
     }
 
     private static int[][] step1(int n) {
@@ -123,6 +67,70 @@ public class TaskC {
         }
         System.out.println(sum);
         return sum;
+    }
+
+    private static int[][] step3(int[][] mas) {
+        int max = mas[0][0];
+        int posI = 0;
+        int posJ = 0;
+        int secondPosI = 0;
+        int secondPosJ = 0;
+        int delI;
+        int delJ;
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas.length; j++) {
+                if (mas[i][j] > max) {
+                    max = mas[i][j];
+                    posI = i;
+                    posJ = j;
+                }
+            }
+        }
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas.length; j++) {
+                if (mas[i][j] == max && (posI != i || posJ != j)) {
+                    secondPosI = i;
+                    secondPosJ = j;
+                }
+            }
+        }
+
+        if (posI == secondPosI) {
+            delI = 1;
+        } else {
+            delI = 2;
+        }
+        if (posJ == secondPosJ) {
+            delJ = 1;
+        } else {
+            delJ = 2;
+        }
+
+        int[][] outPut = new int[mas.length - delI][mas.length - delJ];
+        ArrayList<Integer> a = new ArrayList<>();
+
+        for (int i = 0; i < mas.length; i++) {
+            if (i == posI || i == secondPosI) {
+                continue;
+            }
+            for (int j = 0; j < mas.length; j++) {
+                if (j == posJ || j == secondPosJ) {
+                    continue;
+                }
+                System.out.print(mas[i][j] + " ");
+                a.add(mas[i][j]);
+            }
+            System.out.print("\n");
+        }
+        outPut[0][0] = a.get(0);
+        outPut[0][1] = a.get(1);
+        outPut[0][2] = a.get(2);
+        outPut[1][0] = a.get(3);
+        outPut[1][1] = a.get(4);
+        outPut[1][2] = a.get(5);
+
+
+        return outPut;
     }
 
 }
