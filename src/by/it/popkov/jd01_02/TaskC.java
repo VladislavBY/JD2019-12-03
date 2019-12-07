@@ -13,10 +13,13 @@ public class TaskC {
     }
 
     private static int[][] step3(int[][] mas) {
-        int[][] outPut = new int[mas.length][mas.length];
         int max = mas[0][0];
         int posI = 0;
         int posJ = 0;
+        int secondPosI = 0;
+        int secondPosJ = 0;
+        int delI = 0;
+        int delJ = 0;
         for (int i = 0; i < mas.length; i++) {
             for (int j = 0; j < mas.length; j++) {
                 if (mas[i][j] > max) {
@@ -26,12 +29,34 @@ public class TaskC {
                 }
             }
         }
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas.length; j++) {
+                if (mas[i][j] == max && (posI != i || posJ != j)) {
+                    secondPosI = i;
+                    secondPosJ = j;
+                }
+            }
+        }
+
+        if (posI == secondPosI) {
+            delI = 1;
+        } else {
+            delI = 2;
+        }
+        if (posJ == secondPosJ) {
+            delJ = 1;
+        } else {
+            delJ = 2;
+        }
+
+        int[][] outPut = new int[mas.length - delI][mas.length - delJ];
+
         for (int i = 0; i < outPut.length; i++) {
-            if (i == posI) {
+            if (i == posI || i == secondPosI) {
                 continue;
             }
             for (int j = 0; j < outPut.length; j++) {
-                if (j == posJ) {
+                if (j == posJ || j == secondPosJ) {
                     continue;
                 }
                 outPut[i][j] = mas[i][j];
