@@ -39,13 +39,7 @@ public class TaskC {
             }
             System.out.print("\n");
         }
-        for (int i = 0; i < outPut.length; i++) {
-            for (int j = 0; j < outPut.length; j++) {
-                if (outPut[i][j] == max) {
-                    outPut = step3(outPut);
-                }
-            }
-        }
+
 
         return outPut;
     }
