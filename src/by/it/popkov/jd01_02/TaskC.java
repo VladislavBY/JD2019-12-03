@@ -107,7 +107,7 @@ public class TaskC {
         }
 
         int[][] outPut = new int[mas.length - delI][mas.length - delJ];
-        ArrayList<Integer> a = new ArrayList<>();
+        ArrayList<Integer> laying = new ArrayList<>();
 
         for (int i = 0; i < mas.length; i++) {
             if (i == posI || i == secondPosI) {
@@ -118,16 +118,15 @@ public class TaskC {
                     continue;
                 }
                 System.out.print(mas[i][j] + " ");
-                a.add(mas[i][j]);
+                laying.add(mas[i][j]);
             }
             System.out.print("\n");
         }
-        outPut[0][0] = a.get(0);
-        outPut[0][1] = a.get(1);
-        outPut[0][2] = a.get(2);
-        outPut[1][0] = a.get(3);
-        outPut[1][1] = a.get(4);
-        outPut[1][2] = a.get(5);
+        for (int i = 0; i < outPut.length; i++) {
+            for (int j = 0; j < outPut[0].length; j++) {
+                outPut[i][j] = laying.get(i*outPut[0].length + j);
+            }
+        }
 
 
         return outPut;
