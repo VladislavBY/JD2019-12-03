@@ -39,7 +39,7 @@ public class TaskC {
                 System.out.print("\n");
             }
         } else {
-            step1(n);
+            mas = step1(n);
         }
         return mas;
     }
