@@ -1,7 +1,12 @@
 package by.it.popkov.jd01_03;
 
+
 class Helper {
 
+    /**
+     * @param result - takes double[]
+     * @return return minimum element of double[] result
+     */
     static double findMin(double[] result) {
         double min = Double.MAX_VALUE;
         for (double v : result) {
@@ -10,6 +15,10 @@ class Helper {
         return min;
     }
 
+    /**
+     * @param result - takes double[]
+     * @return return maximum element of double[] result
+     */
     static double findMax(double[] result) {
         double max = Double.MIN_VALUE;
         for (double v : result) {
