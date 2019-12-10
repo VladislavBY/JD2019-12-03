@@ -17,12 +17,15 @@ class InOut {
         System.out.println();
     }
 
-    static void printArray(double[] result, String vlad, int num) {
+    static void printArray(double[] result, String name, int num) {
+        System.out.println(name);
         for (int i = 0; i < result.length; i++) {
-            System.out.printf("");
-
+            System.out.printf("%-4.1f| ", result[i]);
+            if ((i + 1) % num == 0) System.out.println();
         }
+        System.out.println();
     }
+
 }
 
 
