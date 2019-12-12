@@ -20,7 +20,7 @@ class InOut {
     static void printArray(double[] result, String name, int num) {
         System.out.println(name);
         for (int i = 0; i < result.length; i++) {
-            System.out.printf("%s[ %d ] = %-4.1f ", name, i, result[i]);
+            System.out.printf("%s[%d]=%-4f ", name, i, result[i]);
             if ((i + 1) % num == 0) System.out.println();
         }
         System.out.println();

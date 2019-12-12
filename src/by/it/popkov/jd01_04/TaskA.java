@@ -1,11 +1,13 @@
 package by.it.popkov.jd01_04;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class TaskA {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         printMulTable();
-        buildOneDimArray("4 5 7 4 3 5 5 9 8");
+        buildOneDimArray(scanner.nextLine());
     }
 
     static void buildOneDimArray(String line) {
@@ -17,6 +19,7 @@ public class TaskA {
         InOut.printArray(array, "V", 4);
         System.out.printf("Index of first element=%d\n", Arrays.binarySearch(array, first));
         System.out.printf("Index of last element=%d\n", Arrays.binarySearch(array, last));
+
 
     }
 
