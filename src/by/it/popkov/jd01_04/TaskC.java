@@ -4,8 +4,11 @@ import java.util.Arrays;
 
 public class TaskC {
     public static void main(String[] args) {
-        double[] array = new double[]{9.0, 8.0, 11.0, 3.0, 5.0, 6.0, 4.0};
-        System.out.println(Arrays.toString(mergeSor(array)));
+//        double[] array = new double[]{-4.862193087624437, -11.937181707301974, -2.397721846682014, 13.043459411607767, -6.518182401196068, 1.0713582211089907, 15.370559559002995, -10.86830209466446, -9.7837386533957, -13.07642449578424, 7.168261986827282, 15.393028193054153, -14.416765213920826, 13.951851738811726, -11.920261051895066};
+//        System.out.println(Arrays.toString(mergeSor(array)));
+        double [] array = new double[]{-4.862193087624437, -11.937181707301974, -2.397721846682014, 13.043459411607767, -6.518182401196068, 1.0713582211089907, 15.370559559002995, -10.86830209466446, -9.7837386533957, -13.07642449578424, 7.168261986827282, 15.393028193054153, -14.416765213920826, 13.951851738811726, -11.920261051895066};
+        TaskC.mergeSort(array);
+        System.out.println(Arrays.toString(array));
 //        System.out.println(Arrays.toString(TaskC.merge(new double[]{8, 9, 11}, new double[]{3, 4, 5, 9})));
     }
 
@@ -14,7 +17,7 @@ public class TaskC {
         InOut.printArray(array, "V", 5);
         double first = array[0];
         double last = array[array.length - 1];
-//        TaskC.mergeSort(array);
+        TaskC.mergeSort(array);
         InOut.printArray(array, "V", 4);
         System.out.printf("Index of first element=%d\n", Arrays.binarySearch(array, first));
         System.out.printf("Index of last element=%d\n", Arrays.binarySearch(array, last));
@@ -22,27 +25,11 @@ public class TaskC {
 
     }
 
-//    static void mergeSort(double[] array) {
-////        double[] left = new double[array.length / 2];
-////        double[] right = new double[array.length - array.length / 2];
-////        for (int i = 0; i < array.length / 2; i++) {
-////            left[i] = array[i];
-////        }
-////        for (int i = 0; i < array.length - array.length / 2; i++) {
-////            right[i] = array[i + array.length / 2];
-////        }
-//        System.out.println(Arrays.toString(left));
-//        System.out.println(Arrays.toString(right));
-//        if (left.length != 1) {
-//            mergeSort(left);
-//        }
-//        if (right.length != 1) {
-//            mergeSort(right);
-//        }
-//
-//    }
+    static void mergeSort(double[] array) {
+        array = TaskC.mergeSor(array);
+    }
 
-    private static void mergeSor(double[] array) {
+    private static double[] mergeSor(double[] array) {
         if (array.length < 2) return array;
         double[] left = new double[array.length / 2];
         double[] right = new double[array.length - array.length / 2];
@@ -55,10 +42,6 @@ public class TaskC {
         left = mergeSor(left);
         right = mergeSor(right);
         return merge(left, right);
-    }
-
-    private static void mergeSort(double[ ] array, int left, int right){
-
     }
 
     private static double[] merge(double[] part1, double[] part2) {
