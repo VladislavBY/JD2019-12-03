@@ -6,7 +6,7 @@ public class TaskC {
     public static void main(String[] args) {
         double[] array = new double[]{9.0, 8.0, 11.0, 3.0, 5.0, 6.0, 4.0};
         TaskC.mergeSort(array);
-        System.out.println(Arrays.toString(TaskC.merge(new double[]{8, 9, 11}, new double[]{3, 4, 5, 6})));
+        System.out.println(Arrays.toString(TaskC.merge(new double[]{8, 9, 11}, new double[]{3, 4, 5, 9})));
     }
 
     static void buildOneDimArray(String line) {
@@ -45,11 +45,22 @@ public class TaskC {
     private static double[] merge(double[] part1, double[] part2) {
         double[] outPut = new double[part1.length + part2.length];
         for (int i = 0, one = 0, two = 0; i < outPut.length; i++) {
-            if (part1[one] < part2[two]) { //ArrayIndexOutOfBoundsException
+            if(one == part1.length){
+                for (; two < part2.length; two++, i++) {
+                    outPut[i] = part2[two];
+                }
+                break;
+            }
+            if(two == part2.length){
+                for (; one < part1.length; one++, i++) {
+                    outPut[i] = part1[one];
+                }
+                break;
+            }
+            if (part1[one] <= part2[two]) {
                 outPut[i] = part1[one];
                 one++;
-            }
-            if (part1[one] > part2[two]) { //ArrayIndexOutOfBoundsException
+            }else if (part1[one] >= part2[two]) {
                 outPut[i] = part2[two];
                 two++;
             }
