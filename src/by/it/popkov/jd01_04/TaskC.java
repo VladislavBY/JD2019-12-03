@@ -25,10 +25,6 @@ public class TaskC {
 
     }
 
-    static void mergeSort(double[] array) {
-        array = TaskC.mergeSor(array);
-    }
-
     private static double[] mergeSor(double[] array) {
         if (array.length < 2) return array;
         double[] left = new double[array.length / 2];
@@ -43,7 +39,9 @@ public class TaskC {
         right = mergeSor(right);
         return merge(left, right);
     }
-
+    static void mergeSort(double[] array) {
+        Arrays.sort(array);
+    }
     private static double[] merge(double[] part1, double[] part2) {
         double[] outPut = new double[part1.length + part2.length];
         for (int i = 0, one = 0, two = 0; i < outPut.length; i++) {
