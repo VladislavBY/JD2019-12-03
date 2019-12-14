@@ -27,22 +27,43 @@ public class TaskC {
     }
 
     static int binarySearch(double[] array, double value) {
-        double m = array[array.length/2];
-        if (m == value){
-            return array.length/2;
-        }else if(value<m){
-            double[] left = new double[array.length/2];
-            for (int i = 0; i < left.length; i++) {
-                left[i] = array[i];
+
+//        double m = array[array.length/2];
+//        if (m == value){
+//            return array.length/2;
+//        }else if(value<m){
+//            double[] left = new double[array.length/2];
+//            for (int i = 0; i < left.length; i++) {
+//                left[i] = array[i];
+//            }
+//            return binarySearch(left, value);
+//        }else if (value>m){
+//            double[] right = new double[array.length - array.length/2];
+//            for (int i = 0; i < right.length; i++) {
+//                right[i] = array[array.length/2 + i];
+//            }
+//            return binarySearch(right, value);
+//        }else return -1;
+
+        int left = 0;
+        int right = array.length;
+
+        for (; ; ) {
+            int m = left + (right - left) / 2;
+
+            if (array[m] == value) {
+                return m;
             }
-            return binarySearch(left, value);
-        }else if (value>m){
-            double[] right = new double[array.length - array.length/2];
-            for (int i = 0; i < right.length; i++) {
-                right[i] = array[array.length/2 + i];
+
+
+            if (array[m] > value) {
+                right = m;
+            } else if (array[m] < value) {
+                left = m + 1;
             }
-            return binarySearch(right, value);
-        }else return -1;
+
+
+        }
 
     }
 
