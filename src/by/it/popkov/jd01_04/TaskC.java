@@ -67,6 +67,13 @@ public class TaskC {
 
     }
 
+    static void mergeSort(double[] array) {
+        double[] a = mergeSor(array);
+        for (int i = 0; i < array.length; i++) {
+            array[i] = a[i];
+        }
+    }
+
 
     private static double[] mergeSor(double[] array) {
         if (array.length < 2) return array;
@@ -109,7 +116,4 @@ public class TaskC {
         return outPut;
     }
 
-    static void mergeSort(double[] array) {
-        Arrays.sort(array);
-    }
 }
