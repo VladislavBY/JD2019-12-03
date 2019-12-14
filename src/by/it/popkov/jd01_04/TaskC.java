@@ -10,7 +10,7 @@ public class TaskC {
 //        TaskC.mergeSort(array);
 //        System.out.println(Arrays.toString(array));
 //        System.out.println(Arrays.toString(TaskC.merge(new double[]{8, 9, 11}, new double[]{3, 4, 5, 9})));
-        buildOneDimArray("1 4 25 25 4 2 6 9 1 42 0 36  ");
+        buildOneDimArray("2 4 25 3 6 42");
     }
 
     static void buildOneDimArray(String line) {
@@ -20,11 +20,32 @@ public class TaskC {
         double last = array[array.length - 1];
         TaskC.mergeSort(array);
         InOut.printArray(array, "V", 4);
-        System.out.printf("Index of first element=%d\n", Arrays.binarySearch(array, first));
-        System.out.printf("Index of last element=%d\n", Arrays.binarySearch(array, last));
+        System.out.printf("Index of first element=%d\n", binarySearch(array, first));
+        System.out.printf("Index of last element=%d\n", binarySearch(array, last));
 
 
     }
+
+    static int binarySearch(double[] array, double value) {
+        double m = array[array.length/2];
+        if (m == value){
+            return array.length/2;
+        }else if(value<m){
+            double[] left = new double[array.length/2];
+            for (int i = 0; i < left.length; i++) {
+                left[i] = array[i];
+            }
+            return binarySearch(left, value);
+        }else if (value>m){
+            double[] right = new double[array.length - array.length/2];
+            for (int i = 0; i < right.length; i++) {
+                right[i] = array[array.length/2 + i];
+            }
+            return binarySearch(right, value);
+        }else return -1;
+
+    }
+
 
     private static double[] mergeSor(double[] array) {
         if (array.length < 2) return array;
@@ -66,6 +87,7 @@ public class TaskC {
         }
         return outPut;
     }
+
     static void mergeSort(double[] array) {
         Arrays.sort(array);
     }
