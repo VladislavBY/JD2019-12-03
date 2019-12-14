@@ -12,6 +12,10 @@ public class Test {
 
     }
     static void change(int [] a){
-        a = new int[]{1,1,1};
+//        a = new int[]{1,1,1};
+        int[] b = new int[]{1,1,1};
+        for (int i = 0; i < a.length; i++) {
+            a[i] = b[i];
+        }
     }
 }
