@@ -6,10 +6,11 @@ public class TaskC {
     public static void main(String[] args) {
 //        double[] array = new double[]{-4.862193087624437, -11.937181707301974, -2.397721846682014, 13.043459411607767, -6.518182401196068, 1.0713582211089907, 15.370559559002995, -10.86830209466446, -9.7837386533957, -13.07642449578424, 7.168261986827282, 15.393028193054153, -14.416765213920826, 13.951851738811726, -11.920261051895066};
 //        System.out.println(Arrays.toString(mergeSor(array)));
-        double [] array = new double[]{-4.862193087624437, -11.937181707301974, -2.397721846682014, 13.043459411607767, -6.518182401196068, 1.0713582211089907, 15.370559559002995, -10.86830209466446, -9.7837386533957, -13.07642449578424, 7.168261986827282, 15.393028193054153, -14.416765213920826, 13.951851738811726, -11.920261051895066};
-        TaskC.mergeSort(array);
-        System.out.println(Arrays.toString(array));
+//        double [] array = new double[]{-4.862193087624437, -11.937181707301974, -2.397721846682014, 13.043459411607767, -6.518182401196068, 1.0713582211089907, 15.370559559002995, -10.86830209466446, -9.7837386533957, -13.07642449578424, 7.168261986827282, 15.393028193054153, -14.416765213920826, 13.951851738811726, -11.920261051895066};
+//        TaskC.mergeSort(array);
+//        System.out.println(Arrays.toString(array));
 //        System.out.println(Arrays.toString(TaskC.merge(new double[]{8, 9, 11}, new double[]{3, 4, 5, 9})));
+        buildOneDimArray("1 4 25 25 4 2 6 9 1 42 0 36  ");
     }
 
     static void buildOneDimArray(String line) {
@@ -39,9 +40,7 @@ public class TaskC {
         right = mergeSor(right);
         return merge(left, right);
     }
-    static void mergeSort(double[] array) {
-        Arrays.sort(array);
-    }
+
     private static double[] merge(double[] part1, double[] part2) {
         double[] outPut = new double[part1.length + part2.length];
         for (int i = 0, one = 0, two = 0; i < outPut.length; i++) {
@@ -66,5 +65,8 @@ public class TaskC {
             }
         }
         return outPut;
+    }
+    static void mergeSort(double[] array) {
+        Arrays.sort(array);
     }
 }
